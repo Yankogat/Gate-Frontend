@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import authenticationSingleton from "./AuthenticationSingleton";
 
 function App() {
+  //authenticationSingleton.login("123", "123");
   return (
     <div className="App">
       <header className="App-header">
