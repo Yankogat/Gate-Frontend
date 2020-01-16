@@ -15,6 +15,8 @@ class NetworkSingleton {
     async post(url, data = {}, options = {}) {
         return await this.axiosI.post(url, data, options)
     }
-};
+}
 
-export default new NetworkSingleton();
+const networkSingleton = new NetworkSingleton();
+
+export default networkSingleton;

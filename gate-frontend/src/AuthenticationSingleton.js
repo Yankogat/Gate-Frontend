@@ -3,8 +3,13 @@ import networkSingleton from "./NetworkSingleton";
 class AuthenticationSingleton {
     isAuthenticated;
 
-    updateAuthentication() {
-        this.isAuthenticated = networkSingleton.get("/isAuthenticated");
+    async updateAuthentication() {
+        try {
+            await networkSingleton.get("/isAuthenticated");
+            this.isAuthenticated = true;
+        } catch (e) {
+            this.isAuthenticated = false;
+        }
     }
 
     getAuthentication() {
@@ -17,12 +22,14 @@ class AuthenticationSingleton {
         data.append("password", password);
 
         try {
-            let response = await networkSingleton.post("/login", data);
-            this.isAuthenticated = true
+            await networkSingleton.post("/login", data);
+            this.isAuthenticated = true;
         } catch (e) {
-            this.isAuthenticated = false
+            this.isAuthenticated = false;
         }
     }
 }
 
-export default new AuthenticationSingleton();
+const authenticationSingleton = new AuthenticationSingleton();
+
+export default authenticationSingleton;
