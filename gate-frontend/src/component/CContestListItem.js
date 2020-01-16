@@ -7,16 +7,12 @@ class CContestListItem extends React.Component {
         this.state = this.props.data
     }
 
-    redirectToContestPage() {
-        //TODO
-    }
-
     render() {
         return <div>
             <p>{this.state.id}</p>
             <p>{this.state.name}</p>
             <p>{this.state.contestType}</p>
-            <button onClick={this.redirectToContestPage}>Подробнее</button>
+            <a href={`/contests/${this.state.id}`}>Подробнее</a>
         </div>
     }
 }

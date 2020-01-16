@@ -20,7 +20,6 @@ class CContestList extends React.Component {
         this.setState({
             contests: await apiSingleton.getAllContests()
         });
-        console.log(this.state.contests);
     }
 
     render() {
