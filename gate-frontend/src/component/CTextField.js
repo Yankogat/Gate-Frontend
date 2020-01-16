@@ -20,10 +20,11 @@ class CTextField extends React.Component {
 
         if (typeof this.state.updateParentalValue === "function")
             this.state.updateParentalValue(newValue);
-    }
+    };
 
     render() {
-        return <input type={this.state.isPassword ? "password" : "text"} onChange={this.onChange} value={this.state.value}/>
+        return <input type={this.state.isPassword ? "password" : "text"} onChange={this.onChange}
+                      value={this.state.value}/>
     }
 }
 

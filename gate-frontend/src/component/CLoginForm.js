@@ -17,14 +17,13 @@ class CLoginForm extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
         await authenticationSingleton.login(this.state.username, this.state.password);
-        console.log(authenticationSingleton);
-    }
+    };
 
     render() {
-        console.log(this.state)
         return <Form onSubmit={this.handleSubmit}>
             <CTextField onChange={value => this.setState({username: value})}/>
-            <CTextField isPassword={true} value={this.state.password} onChange={value => this.setState({password: value})}/>
+            <CTextField isPassword={true} value={this.state.password}
+                        onChange={value => this.setState({password: value})}/>
             <CButton text="Войти"/>
         </Form>
     }
