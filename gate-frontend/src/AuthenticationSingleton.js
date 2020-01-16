@@ -12,10 +12,6 @@ class AuthenticationSingleton {
         }
     }
 
-    getAuthentication() {
-        return this.isAuthenticated;
-    }
-
     async login(username, password) {
         const data = new FormData();
         data.append("username", username);
