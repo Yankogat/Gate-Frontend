@@ -1,6 +1,6 @@
 import React from "react";
 import authenticationSingleton from "../AuthenticationSingleton";
-import CTextField from "./CTextField";
+import CTextInput from "./CTextInput";
 import CButton from "./CButton";
 import Form from "react-bootstrap/Form";
 
@@ -16,6 +16,7 @@ class CLoginForm extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
+
         await authenticationSingleton.login(this.state.username, this.state.password);
 
         authenticationSingleton.isAuthenticated ? this.onSuccessfulLogin() : this.onFailedLogin()
@@ -35,9 +36,9 @@ class CLoginForm extends React.Component {
 
     render() {
         return <Form onSubmit={this.handleSubmit}>
-            <CTextField onChange={value => this.setState({username: value})}/>
-            <CTextField isPassword={true} value={this.state.password}
-                        onChange={value => this.setState({password: value})}/>
+            <CTextInput updateParentValue={value => this.setState({username: value})}/>
+            <CTextInput isPassword={true} value={this.state.password}
+                        updateParentValue={value => this.setState({password: value})}/>
             <CButton text="Войти"/>
         </Form>
     }
