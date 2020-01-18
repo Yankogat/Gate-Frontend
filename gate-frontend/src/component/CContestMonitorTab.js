@@ -1,7 +1,7 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 
-class CContestMonitorTab extends React.Component {
+export default class CContestMonitorTab extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,5 +25,3 @@ class CContestMonitorTab extends React.Component {
         return <div>{JSON.stringify(this.state.monitorStandings)}</div>
     }
 }
-
-export default CContestMonitorTab;

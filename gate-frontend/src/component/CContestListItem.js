@@ -1,6 +1,6 @@
 import * as React from "react";
 
-class CContestListItem extends React.Component {
+export default class CContestListItem extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,5 +16,3 @@ class CContestListItem extends React.Component {
         </div>
     }
 }
-
-export default CContestListItem;

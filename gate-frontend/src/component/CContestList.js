@@ -2,7 +2,7 @@ import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 import CContestListItem from "./CContestListItem";
 
-class CContestList extends React.Component {
+export default class CContestList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -32,5 +32,3 @@ class CContestList extends React.Component {
         </div>
     }
 }
-
-export default CContestList;

@@ -6,7 +6,7 @@ import CContestProblemsTab from "./component/CContestProblemsTab";
 import CContestSubmitListTab from "./component/CContestSubmitListTab";
 import CContestSubmitTab from "./component/CContestSubmitTab";
 
-class ContestPage extends React.Component {
+export default class ContestPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -51,5 +51,3 @@ class ContestPage extends React.Component {
         </Tabs>
     }
 }
-
-export default ContestPage;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 
-class CContestProblemsTab extends React.Component {
+export default class CContestProblemsTab extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,5 +25,3 @@ class CContestProblemsTab extends React.Component {
         return <div>{JSON.stringify(this.state.problems)}</div>
     }
 }
-
-export default CContestProblemsTab;

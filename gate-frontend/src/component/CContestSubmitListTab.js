@@ -1,7 +1,7 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 
-class CContestSubmitListTab extends React.Component {
+export default class CContestSubmitListTab extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,5 +25,3 @@ class CContestSubmitListTab extends React.Component {
         return <div>{JSON.stringify(this.state.submits)}</div>
     }
 }
-
-export default CContestSubmitListTab;
