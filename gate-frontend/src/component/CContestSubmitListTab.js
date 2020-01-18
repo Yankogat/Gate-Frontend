@@ -1,7 +1,7 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 
-class CContestSubmitsTab extends React.Component {
+class CContestSubmitListTab extends React.Component {
     constructor(props) {
         super(props);
 
@@ -26,4 +26,4 @@ class CContestSubmitsTab extends React.Component {
     }
 }
 
-export default CContestSubmitsTab;
+export default CContestSubmitListTab;

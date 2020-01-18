@@ -3,7 +3,8 @@ import {Tab, Tabs} from "react-bootstrap";
 import CContestMonitorTab from "./component/CContestMonitorTab";
 import apiSingleton from "./ApiSingleton";
 import CContestProblemsTab from "./component/CContestProblemsTab";
-import CContestSubmitsTab from "./component/CContestSubmitsTab";
+import CContestSubmitListTab from "./component/CContestSubmitListTab";
+import CContestSubmitTab from "./component/CContestSubmitTab";
 
 class ContestPage extends React.Component {
     constructor(props) {
@@ -39,11 +40,13 @@ class ContestPage extends React.Component {
             </Tab>
             <Tab eventKey="submits" title="Посылки">
                 {this.state.contestInfo &&
-                    <CContestSubmitsTab contestInfo={this.state.contestInfo}/>
+                    <CContestSubmitListTab contestInfo={this.state.contestInfo}/>
                 }
             </Tab>
             <Tab eventKey="submit" title="Послать решение">
-                <p>Submit tab content</p>
+                {this.state.contestInfo &&
+                    <CContestSubmitTab contestInfo={this.state.contestInfo}/>
+                }
             </Tab>
         </Tabs>
     }

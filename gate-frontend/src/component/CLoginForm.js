@@ -1,10 +1,8 @@
 import React from "react";
 import authenticationSingleton from "../AuthenticationSingleton";
-import CTextInput from "./CTextInput";
-import CButton from "./CButton";
 import Form from "react-bootstrap/Form";
 
-class CLoginForm extends React.Component {
+export default class CLoginForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -36,12 +34,10 @@ class CLoginForm extends React.Component {
 
     render() {
         return <Form onSubmit={this.handleSubmit}>
-            <CTextInput updateParentValue={value => this.setState({username: value})}/>
-            <CTextInput isPassword={true} value={this.state.password}
-                        updateParentValue={value => this.setState({password: value})}/>
-            <CButton text="Войти"/>
+            <input type="text" value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
+            <input type="password" value={this.state.password}
+                   onChange={event => this.setState({password: event.target.value})}/>
+            <button>Войти</button>
         </Form>
     }
 }
-
-export default CLoginForm;
