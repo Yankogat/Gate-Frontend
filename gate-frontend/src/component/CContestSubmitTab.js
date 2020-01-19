@@ -1,8 +1,9 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 import Form from "react-bootstrap/Form";
+import CForm from "./CForm";
 
-export default class CContestSubmitTab extends React.Component {
+export default class CContestSubmitTab extends CForm {
     constructor(props) {
         super(props);
 
@@ -38,13 +39,14 @@ export default class CContestSubmitTab extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
+        debugger
 
         await apiSingleton.submitSolution(this.state.contestInfo.id, this.state.solutionSrc, this.state.selectedProblem, this.state.selectedCompiler);
     };
 
     render() {
         return <Form onSubmit={this.handleSubmit}>
-            <select onChange={event => this.setState({selectedCompiler: event.target.value})}>
+            <select name="selectedCompiler" onChange={this.handleInputChange}>
                 <option value={undefined}>-Выберите компилятор-</option>
                 {
                     this.state.compilerList.map(compiler =>
@@ -52,7 +54,7 @@ export default class CContestSubmitTab extends React.Component {
                     )
                 }
             </select>
-            <select onChange={event => this.setState({selectedProblem: event.target.value})}>
+            <select name="selectedProblem" onChange={this.handleInputChange}>
                 <option value={undefined}>-Выберите задачу-</option>
                 {
                     this.state.problemList.map(problem =>
@@ -60,8 +62,7 @@ export default class CContestSubmitTab extends React.Component {
                     )
                 }
             </select>
-            <textarea value={this.state.solutionSrc}
-                      onChange={event => this.setState({solutionSrc: event.target.value})}/>
+            <textarea name="solutionSrc" value={this.state.solutionSrc} onChange={this.handleInputChange}/>
             <button>Послать решение</button>
         </Form>
     }

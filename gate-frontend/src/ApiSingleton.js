@@ -25,8 +25,8 @@ class ApiSingleton {
     async getCompilersByContestId(id) {
         return [
             {
-                name: "С",
-                value: "С"
+                name: "C",
+                value: "C"
             },
             {
                 name: "Python 3",
