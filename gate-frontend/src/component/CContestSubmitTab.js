@@ -39,7 +39,6 @@ export default class CContestSubmitTab extends CForm {
 
     handleSubmit = async event => {
         event.preventDefault();
-        debugger
 
         await apiSingleton.submitSolution(this.state.contestInfo.id, this.state.solutionSrc, this.state.selectedProblem, this.state.selectedCompiler);
     };

@@ -1,27 +1,50 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
+import CForm from "./CForm";
 
-export default class CContestProblemsTab extends React.Component {
+export default class CContestProblemsTab extends CForm {
     constructor(props) {
         super(props);
 
         this.state = {
             contestInfo: props.contestInfo,
-            problems: []
+            problemList: [],
+            selectedProblemId: undefined
         };
     }
 
     componentDidMount() {
-        this.getProblems();
+        this.getProblemList();
     }
 
-    async getProblems() {
+    async getProblemList() {
+        const problemList = await apiSingleton.getProblemsByContestId(this.state.contestInfo.id);
         this.setState({
-            problems: await apiSingleton.getProblemsByContestId(this.state.contestInfo.id)
+            problemList: problemList,
+            selectedProblemId: problemList.length ? problemList[0].id : undefined
         });
     }
 
+    getSelectedProblem() {
+        return this.state.problemList.find(value => value.id === this.state.selectedProblemId)
+    }
+
     render() {
-        return <div>{JSON.stringify(this.state.problems)}</div>
+        return <div>
+            <h1 className="title">{this.state.contestInfo && this.state.contestInfo.name}
+                <select className="form-control" name="selectedProblemId" onChange={this.handleInputChange}>
+                    {
+                        this.state.problemList.map(problem =>
+                            <option value={problem.id}>{problem.name}</option>
+                        )
+                    }
+                </select>
+            </h1>
+            <div>
+                { this.state.selectedProblemId !== undefined &&
+                    <div dangerouslySetInnerHTML={ {__html: this.getSelectedProblem().wording} }/>
+                }
+            </div>
+        </div>
     }
 }
