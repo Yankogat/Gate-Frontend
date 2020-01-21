@@ -1,5 +1,7 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
+import CContentSubmitListItem from "./CContestSubmitListItem";
+import {Accordion} from "react-bootstrap";
 
 export default class CContestSubmitListTab extends React.Component {
     constructor(props) {
@@ -7,7 +9,8 @@ export default class CContestSubmitListTab extends React.Component {
 
         this.state = {
             contestInfo: props.contestInfo,
-            submits: []
+            problemList: props.problemList,
+            submitList: []
         };
     }
 
@@ -17,11 +20,21 @@ export default class CContestSubmitListTab extends React.Component {
 
     async getSubmits() {
         this.setState({
-            submits: await apiSingleton.getSubmitsByContestId(this.state.contestInfo.id)
+            submitList: await apiSingleton.getSubmitsByContestId(this.state.contestInfo.id)
         });
     }
 
+    getProblemNameById(id) {
+        const problem = this.state.problemList.find(problem => problem.id === id);
+
+        return problem ?  problem.name : "";
+    }
+
     render() {
-        return <div>{JSON.stringify(this.state.submits)}</div>
+        return <Accordion>{
+            this.state.submitList.map(submit =>
+                <CContentSubmitListItem contestInfo={this.state.contestInfo} submitInfo={submit} problemName={this.getProblemNameById(submit.problemId)}/>
+            )
+        }</Accordion>
     }
 }

@@ -8,21 +8,9 @@ export default class CContestProblemsTab extends CForm {
 
         this.state = {
             contestInfo: props.contestInfo,
-            problemList: [],
-            selectedProblemId: undefined
+            problemList: props.problemList,
+            selectedProblemId: props.problemList.length ? props.problemList[0].id : undefined
         };
-    }
-
-    componentDidMount() {
-        this.getProblemList();
-    }
-
-    async getProblemList() {
-        const problemList = await apiSingleton.getProblemsByContestId(this.state.contestInfo.id);
-        this.setState({
-            problemList: problemList,
-            selectedProblemId: problemList.length ? problemList[0].id : undefined
-        });
     }
 
     getSelectedProblem() {

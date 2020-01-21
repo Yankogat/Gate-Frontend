@@ -11,7 +11,7 @@ export default class CContestSubmitTab extends CForm {
             contestInfo: props.contestInfo,
 
             selectedProblem: undefined,
-            problemList: [],
+            problemList: props.problemList,
 
             selectedCompiler: undefined,
             compilerList: [],
@@ -22,18 +22,11 @@ export default class CContestSubmitTab extends CForm {
 
     componentDidMount() {
         this.getCompilerList();
-        this.getProblemList();
     }
 
     async getCompilerList() {
         this.setState({
             compilerList: await apiSingleton.getCompilersByContestId(this.state.contestInfo.id)
-        });
-    }
-
-    async getProblemList() {
-        this.setState({
-            problemList: await apiSingleton.getProblemsByContestId(this.state.contestInfo.id)
         });
     }
 

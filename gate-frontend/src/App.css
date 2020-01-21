@@ -5,6 +5,15 @@
   outline: none;
 }
 
+/*
+  TODO
+    adaptive layout instead of this
+ */
+body {
+  min-width: 980px;
+  max-width: 100vw;
+}
+
 .sidebar {
   background-color: #f0f0ff;
   max-width: 15rem;
@@ -103,4 +112,42 @@ select.form-control {
   vertical-align: top;
   margin-left: 2rem;
   background-color: #fefefa;
+}
+
+.submit-header {
+  padding: 0.5rem 3rem 0.5rem 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.submit-problem {
+  font-weight: 400;
+  color: grey;
+  margin-right: auto;
+  max-width: 30rem;
+}
+
+.submit-status {
+  max-width: 30rem;
+  text-align: end;
+  font-weight: 600;
+}
+
+.submit-score {
+  max-width: 7rem;
+  text-align: end;
+  font-weight: 600;
+  margin-left: 1.5rem;
+}
+
+.submit-body {
+  padding: 1.5rem;
+  background-color: #f0f0ff;
+}
+
+.submit-solution-compiler {
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
