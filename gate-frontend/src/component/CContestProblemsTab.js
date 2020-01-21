@@ -1,6 +1,9 @@
 import * as React from "react";
 import apiSingleton from "../ApiSingleton";
 import CForm from "./CForm";
+import {AccordionToggle} from "react-bootstrap";
+import AccordionCollapse from "react-bootstrap/AccordionCollapse";
+import Accordion from "react-bootstrap/Accordion";
 
 export default class CContestProblemsTab extends CForm {
     constructor(props) {
@@ -8,31 +11,24 @@ export default class CContestProblemsTab extends CForm {
 
         this.state = {
             contestInfo: props.contestInfo,
-            problemList: props.problemList,
-            selectedProblemId: props.problemList.length ? props.problemList[0].id : undefined
+            problemList: props.problemList
         };
     }
 
-    getSelectedProblem() {
-        return this.state.problemList.find(value => value.id === this.state.selectedProblemId)
-    }
-
     render() {
-        return <div>
-            <h1 className="title">{this.state.contestInfo && this.state.contestInfo.name}
-                <select className="form-control" name="selectedProblemId" onChange={this.handleInputChange}>
-                    {
-                        this.state.problemList.map(problem =>
-                            <option value={problem.id}>{problem.name}</option>
-                        )
-                    }
-                </select>
-            </h1>
-            <div>
-                { this.state.selectedProblemId !== undefined &&
-                    <div dangerouslySetInnerHTML={ {__html: this.getSelectedProblem().wording} }/>
-                }
-            </div>
-        </div>
+        return <Accordion className="problemlist-container">
+            {
+                this.state.problemList.map(problem =>
+                    <div>
+                        <AccordionToggle eventKey={problem.id} as="div">
+                            <h2> {problem.name}</h2>
+                        </AccordionToggle>
+                        <AccordionCollapse eventKey={problem.id}>
+                            <div dangerouslySetInnerHTML={{__html: problem.wording}}/>
+                        </AccordionCollapse>
+                    </div>
+                )
+            }
+        </Accordion>
     }
 }

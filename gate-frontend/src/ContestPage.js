@@ -49,7 +49,10 @@ export default class ContestPage extends React.Component {
                         </Tab>
                         <Tab eventKey="problems" title="Задачи">
                             {this.state.contestInfo &&
-                            <CContestProblemsTab contestInfo={this.state.contestInfo} problemList={this.state.problemList}/>
+                            <>
+                                <h1 className="title">{this.state.contestInfo && this.state.contestInfo.name}</h1>
+                                <CContestProblemsTab contestInfo={this.state.contestInfo} problemList={this.state.problemList}/>
+                            </>
                             }
                         </Tab>
                         <Tab eventKey="submits" title="Посылки">
