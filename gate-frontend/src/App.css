@@ -90,30 +90,6 @@ body {
   color: #ff7f00!important;
 }
 
-select.form-control {
-  -webkit-appearance: none;
-  max-width: 20rem;
-  display: inline-block;
-  border: none;
-  color: #ff7f00;
-  font-size: 1.4rem;
-  vertical-align: top;
-  margin-left: 2rem;
-  background-color: #fefefa;
-}
-
-select.form-control {
-  -webkit-appearance: none;
-  max-width: 20rem;
-  display: inline-block;
-  border: none;
-  color: #ff7f00;
-  font-size: 1.4rem;
-  vertical-align: top;
-  margin-left: 2rem;
-  background-color: #fefefa;
-}
-
 .submit-header {
   padding: 0.5rem 3rem 0.5rem 0.5rem;
   display: flex;
@@ -150,4 +126,26 @@ select.form-control {
 .submit-solution-compiler {
   margin-bottom: 1rem;
   font-weight: 600;
+}
+
+.btn.btn-primary {
+  color: #fefefa;
+  background-color: #ff7f00;
+  border-color: #ff7f00;
+  font-weight: 600;
+}
+
+.submit-form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.submit-form-row * {
+  margin-right: 4rem;
+}
+
+.submit-form-button {
+  margin-right: 0;
+  width: 40rem;
 }
