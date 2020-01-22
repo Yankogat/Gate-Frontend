@@ -1,34 +1,21 @@
 import React from "react";
 import {AccordionCollapse, AccordionToggle, Form} from "react-bootstrap";
+import Util from "../Util";
 
 export default function CContentSubmitListItem(props) {
-    const getTextCorrespondingToStatusCode = () => {
-        return {
-            ACCEPTED: "Зачтена",
-            AWAITING_TESTING: "Ожидает тестирования"
-        }[props.submitInfo.status];
-    };
-
-    const getClassCorrespondingToStatusCode = () => {
-        return "text-" + {
-            ACCEPTED: "success",
-            AWAITING_TESTING: "warning"
-        }[props.submitInfo.status];
-    };
-
     return <div className="submit">
         <AccordionToggle eventKey={props.submitInfo.id} as="div" className="submit-header">
-            <h2 className="submit-problem">
-                {props.problemName}
-            </h2>
-            <h2 className={"submit-status " + getClassCorrespondingToStatusCode()}>
-                {getTextCorrespondingToStatusCode()}
+            <h2 className={"submit-status " + Util.getClassCorrespondingToStatusCode(props.submitInfo.status)}>
+                {Util.getTextCorrespondingToStatusCode(props.submitInfo.status)}
             </h2>
             <h2 className="submit-score">
-                {props.submitInfo.summary ?
-                    props.submitInfo.summary.score : "???"
+                {props.submitInfo.summary &&
+                    props.submitInfo.summary.score
                 }
             </h2>
+            <h5 className="submit-problem">
+                {props.problemName}
+            </h5>
         </AccordionToggle>
         {props.submitInfo.summary &&
         <AccordionCollapse eventKey={props.submitInfo.id} className="submit-body">

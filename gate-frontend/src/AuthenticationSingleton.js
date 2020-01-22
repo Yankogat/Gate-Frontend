@@ -1,12 +1,14 @@
 import networkSingleton from "./NetworkSingleton";
 
-class AuthenticationSingleton {
+class AuthenticationSingleton{
     isAuthenticated;
+    id;
 
     async updateAuthentication() {
         try {
             await networkSingleton.get("/isAuthenticated");
             this.isAuthenticated = true;
+            this.id = (await networkSingleton.get("/getMyId")).data
         } catch (e) {
             this.isAuthenticated = false;
         }
@@ -20,6 +22,8 @@ class AuthenticationSingleton {
         try {
             await networkSingleton.post("/login", data);
             this.isAuthenticated = true;
+            this.id = (await networkSingleton.get("/getMyId")).data
+            debugger
         } catch (e) {
             this.isAuthenticated = false;
         }
