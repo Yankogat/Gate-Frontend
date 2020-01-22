@@ -149,3 +149,26 @@ body {
   margin-right: 0;
   width: 40rem;
 }
+
+.problem-header {
+  margin-top: 2rem;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.problem-header-name {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.problem-header-status {
+  color: gray;
+  display: inline-block;
+  float: right;
+  font-weight: 600;
+}
+
+.problem-body {
+  padding: 1rem 1rem 1rem 1.5rem;
+  background-color: #f0f0ff;
+}

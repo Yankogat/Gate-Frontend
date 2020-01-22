@@ -3,38 +3,18 @@ import apiSingleton from "../ApiSingleton";
 import CContentSubmitListItem from "./CContestSubmitListItem";
 import {Accordion} from "react-bootstrap";
 
-export default class CContestSubmitListTab extends React.Component {
-    constructor(props) {
-        super(props);
+export default function CContestSubmitListTab(props) {
+    const getProblemNameById = id => {
+        const problem = props.problemList.find(problem => problem.id === id);
 
-        this.state = {
-            contestInfo: props.contestInfo,
-            problemList: props.problemList,
-            submitList: []
-        };
-    }
+        return problem ? problem.name : "";
+    };
 
-    componentDidMount() {
-        this.getSubmits();
-    }
+    return <Accordion>{
+        props.submitList.map(submit =>
+            <CContentSubmitListItem contestInfo={props.contestInfo} submitInfo={submit}
+                                    problemName={getProblemNameById(submit.problemId)}/>
+        )
+    }</Accordion>
 
-    async getSubmits() {
-        this.setState({
-            submitList: await apiSingleton.getSubmitsByContestId(this.state.contestInfo.id)
-        });
-    }
-
-    getProblemNameById(id) {
-        const problem = this.state.problemList.find(problem => problem.id === id);
-
-        return problem ?  problem.name : "";
-    }
-
-    render() {
-        return <Accordion>{
-            this.state.submitList.map(submit =>
-                <CContentSubmitListItem contestInfo={this.state.contestInfo} submitInfo={submit} problemName={this.getProblemNameById(submit.problemId)}/>
-            )
-        }</Accordion>
-    }
 }

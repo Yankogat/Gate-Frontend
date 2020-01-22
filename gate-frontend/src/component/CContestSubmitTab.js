@@ -33,7 +33,7 @@ export default class CContestSubmitTab extends CForm {
 
     handleSubmit = async event => {
         event.preventDefault();
-
+        debugger
         await apiSingleton.submitSolution(this.state.contestInfo.id, this.state.solutionSrc, this.state.selectedProblem, this.state.selectedCompiler);
     };
 
@@ -57,7 +57,7 @@ export default class CContestSubmitTab extends CForm {
                         )
                     }
                 </Form.Control>
-                <Button className="submit-form-button" size="lg" variant="primary">Послать решение</Button>
+                <Button type="submit" className="submit-form-button" size="lg" variant="primary">Послать решение</Button>
             </div>
         </Form>
     }
